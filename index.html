@@ -9,14 +9,30 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:#0a0a0a;color:#fff;font-family:'Poppins';}
+body{
+font-family:'Poppins';
+color:#fff;
+background:url('https://i.imgur.com/8Km9tLL.jpg') no-repeat center;
+background-size:cover;
+background-attachment:fixed;
+}
 
-/* HEADER */
+/* overlay escuro */
+body::before{
+content:'';
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.85);
+z-index:-1;
+}
+
 header{
 text-align:center;
 padding:20px;
 background:#000;
 }
+
 h1{
 font-family:'Anton';
 color:#00ffcc;
@@ -26,13 +42,14 @@ color:#00ffcc;
 nav{
 display:flex;
 justify-content:center;
-gap:20px;
+flex-wrap:wrap;
+gap:15px;
 background:#111;
 padding:10px;
 }
+
 nav a{
 color:#fff;
-text-decoration:none;
 cursor:pointer;
 }
 
@@ -42,10 +59,17 @@ display:none;
 padding:30px;
 max-width:1000px;
 margin:auto;
+opacity:0;
+transform:translateY(30px);
+transition:0.6s;
 }
-.active{display:block;}
+.section.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
 
-/* CARDS */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -56,13 +80,11 @@ gap:20px;
 background:#111;
 padding:15px;
 border-radius:10px;
-box-shadow:0 0 15px rgba(0,255,204,0.2);
+box-shadow:0 0 20px rgba(0,255,204,0.2);
 }
 
 .card img{
 width:100%;
-height:180px;
-object-fit:cover;
 border-radius:10px;
 }
 
@@ -77,6 +99,36 @@ text-decoration:none;
 font-weight:bold;
 border-radius:5px;
 }
+
+/* CAMISETAS */
+.options{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.box{
+width:25px;
+height:25px;
+border-radius:5px;
+cursor:pointer;
+border:2px solid #fff;
+}
+
+.red{background:red;}
+.beige{background:#d2b48c;}
+.black{background:black;}
+
+.size{
+padding:5px 10px;
+border:1px solid #fff;
+cursor:pointer;
+}
+
+/* RESPONSIVO */
+@media(max-width:800px){
+.grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 
@@ -90,9 +142,7 @@ border-radius:5px;
 <nav>
 <a onclick="show('home')">Início</a>
 <a onclick="show('whey')">Whey</a>
-<a onclick="show('creatina')">Creatina</a>
 <a onclick="show('pre')">Pré-treino</a>
-<a onclick="show('garrafas')">Garrafas</a>
 <a onclick="show('roupas')">Roupas</a>
 </nav>
 
@@ -100,15 +150,12 @@ border-radius:5px;
 <div id="home" class="section active">
 <h2>Quem somos</h2>
 <p>
-A Body Fit nasceu em Porto Alegre com o objetivo de elevar o nível de treino e performance.
-Com equipamentos modernos e ambiente focado em resultado, se tornou referência para quem busca evolução real.
+A Body Fit nasceu em Porto Alegre com o objetivo de transformar desempenho em resultado real. 
+Focada em evolução, disciplina e consistência, a academia se tornou referência entre quem busca alta performance.
 </p>
 
-<h2>Horário de funcionamento</h2>
-<p>
-Segunda a sexta: 08h às 22h <br>
-Sábado: 13h às 17:30
-</p>
+<h2>Horário</h2>
+<p>Segunda a sexta: 08h às 22h<br>Sábado: 13h às 17:30</p>
 
 <h2>Localização</h2>
 <p>Porto Alegre - RS</p>
@@ -119,25 +166,11 @@ Sábado: 13h às 17:30
 <h2>Whey Protein</h2>
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a">
-<p><strong>Whey 1kg</strong></p>
-<p>Preço: R$120</p>
-<p>Uso: 30g após treino</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20Whey%201kg%20R$120">Comprar</a>
-</div>
-</div>
-</div>
-
-<!-- CREATINA -->
-<div id="creatina" class="section">
-<h2>Creatina</h2>
-<div class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e">
-<p><strong>Creatina 300g</strong></p>
-<p>Preço: R$80</p>
-<p>Uso: 5g por dia</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20Creatina%20300g%20R$80">Comprar</a>
+<img src="https://i.imgur.com/Xt5Xx6h.png">
+<p><strong>Gold Standard Whey 2.27kg</strong></p>
+<p>Preço: R$199</p>
+<p>Uso: 30g pós-treino</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Whey%202.27kg%20R$199">Comprar</a>
 </div>
 </div>
 </div>
@@ -147,45 +180,50 @@ Sábado: 13h às 17:30
 <h2>Pré-treino</h2>
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
-<p><strong>Pré-treino 250g</strong></p>
-<p>Preço: R$90</p>
+<img src="https://i.imgur.com/xu1XJ5L.png">
+<p><strong>Évora Darkness 300g</strong></p>
+<p>Preço: R$99</p>
 <p>Uso: antes do treino</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20Pré-treino%20250g%20R$90">Comprar</a>
-</div>
-</div>
-</div>
-
-<!-- GARRAFAS -->
-<div id="garrafas" class="section">
-<h2>Garrafas</h2>
-<div class="grid">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1526403225-4c1f0c6d8f5f">
-<p><strong>Garrafa personalizada</strong></p>
-<p>Preço: R$40</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20Garrafa%20R$40">Comprar</a>
+<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Pré-treino%20Évora%20300g%20R$99">Comprar</a>
 </div>
 </div>
 </div>
 
 <!-- ROUPAS -->
 <div id="roupas" class="section">
-<h2>Roupas</h2>
+<h2>Camisetas</h2>
 <div class="grid">
 <div class="card">
-<img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+<img src="https://i.imgur.com/Z9a9z4G.png">
 <p><strong>Camiseta Body Fit</strong></p>
 <p>Preço: R$70</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20Camiseta%20R$70">Comprar</a>
+
+<p>Cor:</p>
+<div class="options">
+<div class="box red"></div>
+<div class="box beige"></div>
+<div class="box black"></div>
+</div>
+
+<p>Tamanho:</p>
+<div class="options">
+<div class="size">P</div>
+<div class="size">M</div>
+<div class="size">G</div>
+</div>
+
+<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Camiseta%20BodyFit%20R$70">Comprar</a>
 </div>
 </div>
 </div>
 
 <script>
 function show(id){
-document.querySelectorAll('.section').forEach(sec=>sec.classList.remove('active'));
+document.querySelectorAll('.section').forEach(s=>{
+s.classList.remove('active');
+});
 document.getElementById(id).classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 
