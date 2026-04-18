@@ -9,10 +9,11 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
 font-family:'Poppins';
 color:#fff;
-background:url('https://i.imgur.com/8Km9tLL.jpg') no-repeat center;
+background:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438') no-repeat center;
 background-size:cover;
 background-attachment:fixed;
 }
@@ -27,6 +28,7 @@ background:rgba(0,0,0,0.85);
 z-index:-1;
 }
 
+/* HEADER */
 header{
 text-align:center;
 padding:20px;
@@ -60,9 +62,10 @@ padding:30px;
 max-width:1000px;
 margin:auto;
 opacity:0;
-transform:translateY(30px);
-transition:0.6s;
+transform:translateY(40px);
+transition:0.8s;
 }
+
 .section.active{
 display:block;
 opacity:1;
@@ -80,7 +83,13 @@ gap:20px;
 background:#111;
 padding:15px;
 border-radius:10px;
-box-shadow:0 0 20px rgba(0,255,204,0.2);
+transition:0.3s;
+box-shadow:0 0 15px rgba(0,255,204,0.2);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(0,255,204,0.6);
 }
 
 .card img{
@@ -88,16 +97,24 @@ width:100%;
 border-radius:10px;
 }
 
+/* BOTÃO */
 .btn{
 display:block;
 margin-top:10px;
-padding:10px;
+padding:12px;
 background:#00ffcc;
 color:#000;
 text-align:center;
 text-decoration:none;
 font-weight:bold;
-border-radius:5px;
+border-radius:6px;
+transition:0.3s;
+box-shadow:0 0 10px rgba(0,255,204,0.3);
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(0,255,204,0.8);
 }
 
 /* CAMISETAS */
@@ -112,7 +129,7 @@ width:25px;
 height:25px;
 border-radius:5px;
 cursor:pointer;
-border:2px solid #fff;
+border:2px solid white;
 }
 
 .red{background:red;}
@@ -121,7 +138,7 @@ border:2px solid #fff;
 
 .size{
 padding:5px 10px;
-border:1px solid #fff;
+border:1px solid white;
 cursor:pointer;
 }
 
@@ -141,6 +158,7 @@ cursor:pointer;
 
 <nav>
 <a onclick="show('home')">Início</a>
+<a onclick="show('planos')">Planos</a>
 <a onclick="show('whey')">Whey</a>
 <a onclick="show('pre')">Pré-treino</a>
 <a onclick="show('roupas')">Roupas</a>
@@ -149,71 +167,91 @@ cursor:pointer;
 <!-- HOME -->
 <div id="home" class="section active">
 <h2>Quem somos</h2>
-<p>
-A Body Fit nasceu em Porto Alegre com o objetivo de transformar desempenho em resultado real. 
-Focada em evolução, disciplina e consistência, a academia se tornou referência entre quem busca alta performance.
-</p>
+<p>A Body Fit nasceu em Porto Alegre focada em performance real e evolução constante.</p>
 
 <h2>Horário</h2>
-<p>Segunda a sexta: 08h às 22h<br>Sábado: 13h às 17:30</p>
+<p>Seg a Sex: 08h às 22h<br>Sábado: 13h às 17:30</p>
 
 <h2>Localização</h2>
 <p>Porto Alegre - RS</p>
 </div>
 
+<!-- PLANOS -->
+<div id="planos" class="section">
+<h2>Planos</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Mensal</h3>
+<p><strong>R$199,90</strong></p>
+<p>Acesso a uma unidade</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Plano Mensal">Contratar</a>
+</div>
+
+<div class="card">
+<h3>Gold</h3>
+<p><strong>12x R$139,90</strong></p>
+<p>Acesso total</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Plano Gold">Contratar</a>
+</div>
+
+<div class="card">
+<h3>Duo Gold</h3>
+<p><strong>12x R$129,90</strong></p>
+<p>Para 2 pessoas</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Plano Duo">Contratar</a>
+</div>
+
+</div>
+</div>
+
 <!-- WHEY -->
 <div id="whey" class="section">
-<h2>Whey Protein</h2>
-<div class="grid">
+<h2>Whey</h2>
 <div class="card">
-<img src="https://m.media-amazon.com/images/I/61ZQ5RZ7W2L._AC_SL1500_.jpg">
-<p><strong>Gold Standard Whey 2.27kg</strong></p>
-<p>Preço: R$199</p>
-<p>Uso: 30g pós-treino</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Whey%202.27kg%20R$199">Comprar</a>
-</div>
+<img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a">
+<p>Whey 1kg</p>
+<p>R$120</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Quero Whey">Comprar</a>
 </div>
 </div>
 
 <!-- PRE -->
 <div id="pre" class="section">
 <h2>Pré-treino</h2>
-<div class="grid">
 <div class="card">
-<img src="https://cdn.awsli.com.br/600x450/250/250068/produto/15449768/e3a9b5b2c4.jpg">
-<p><strong>Évora Darkness 300g</strong></p>
-<p>Preço: R$99</p>
-<p>Uso: antes do treino</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Pré-treino%20Évora%20300g%20R$99">Comprar</a>
-</div>
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
+<p>Pré-treino 300g</p>
+<p>R$99</p>
+<a class="btn" href="https://wa.me/5551990110167?text=Quero Pré-treino">Comprar</a>
 </div>
 </div>
 
 <!-- ROUPAS -->
 <div id="roupas" class="section">
 <h2>Camisetas</h2>
-<div class="grid">
+
 <div class="card">
 <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+
 <p><strong>Camiseta Body Fit</strong></p>
-<p>Preço: R$70</p>
+<p>R$70</p>
 
 <p>Cor:</p>
 <div class="options">
-<div class="box red"></div>
-<div class="box beige"></div>
-<div class="box black"></div>
+<div class="box red" onclick="selectColor('Vermelha', this)"></div>
+<div class="box beige" onclick="selectColor('Bege', this)"></div>
+<div class="box black" onclick="selectColor('Preta', this)"></div>
 </div>
 
 <p>Tamanho:</p>
 <div class="options">
-<div class="size">P</div>
-<div class="size">M</div>
-<div class="size">G</div>
+<div class="size" onclick="selectSize('P', this)">P</div>
+<div class="size" onclick="selectSize('M', this)">M</div>
+<div class="size" onclick="selectSize('G', this)">G</div>
 </div>
 
-<a class="btn" href="https://wa.me/5551990110167?text=Quero%20comprar%20Camiseta%20BodyFit%20R$70">Comprar</a>
-</div>
+<a class="btn" onclick="comprar()">Comprar</a>
 </div>
 </div>
 
@@ -224,6 +262,29 @@ s.classList.remove('active');
 });
 document.getElementById(id).classList.add('active');
 window.scrollTo({top:0,behavior:'smooth'});
+}
+
+let cor='', tamanho='';
+
+function selectColor(c,e){
+cor=c;
+document.querySelectorAll('.box').forEach(b=>b.style.border='2px solid white');
+e.style.border='2px solid #00ffcc';
+}
+
+function selectSize(t,e){
+tamanho=t;
+document.querySelectorAll('.size').forEach(s=>s.style.background='transparent');
+e.style.background='#00ffcc';
+}
+
+function comprar(){
+if(!cor || !tamanho){
+alert("Selecione cor e tamanho");
+return;
+}
+let msg=`Quero Camiseta Body Fit | Cor: ${cor} | Tamanho: ${tamanho}`;
+window.open("https://wa.me/5551990110167?text="+encodeURIComponent(msg));
 }
 </script>
 
