@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Body Fit</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
 
 body{
 font-family:'Poppins';
@@ -18,56 +21,75 @@ background-size:cover;
 background-attachment:fixed;
 }
 
-/* overlay escuro */
 body::before{
 content:'';
 position:fixed;
-top:0;left:0;
-width:100%;height:100%;
+width:100%;
+height:100%;
 background:rgba(0,0,0,0.85);
 z-index:-1;
 }
 
-/* HEADER */
-header{
-text-align:center;
-padding:20px;
-background:#000;
-}
-
-h1{
-font-family:'Anton';
-color:#00ffcc;
+/* FONTE PERSONALIZADA */
+@font-face{
+font-family:'Aldo';
+src:url('fonts/aldo.ttf');
 }
 
 /* MENU */
 nav{
+position:fixed;
+top:0;
+width:100%;
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
-gap:15px;
-background:#111;
-padding:10px;
+gap:20px;
+background:#000;
+padding:15px;
+z-index:1000;
 }
 
 nav a{
 color:#fff;
+text-decoration:none;
 cursor:pointer;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#00ffcc;
+}
+
+/* HEADER */
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+h1{
+font-family:'Aldo';
+font-size:60px;
+color:#00ffcc;
 }
 
 /* SEÇÕES */
-.section{
-display:none;
-padding:30px;
+section{
+padding:80px 20px;
 max-width:1000px;
 margin:auto;
+}
+
+/* ANIMAÇÃO */
+.fade{
 opacity:0;
 transform:translateY(40px);
 transition:0.8s;
 }
 
-.section.active{
-display:block;
+.fade.show{
 opacity:1;
 transform:translateY(0);
 }
@@ -79,9 +101,10 @@ grid-template-columns:1fr 1fr;
 gap:20px;
 }
 
+/* CARDS */
 .card{
 background:#111;
-padding:15px;
+padding:20px;
 border-radius:10px;
 transition:0.3s;
 box-shadow:0 0 15px rgba(0,255,204,0.2);
@@ -90,11 +113,6 @@ box-shadow:0 0 15px rgba(0,255,204,0.2);
 .card:hover{
 transform:translateY(-8px);
 box-shadow:0 0 30px rgba(0,255,204,0.6);
-}
-
-.card img{
-width:100%;
-border-radius:10px;
 }
 
 /* BOTÃO */
@@ -109,7 +127,6 @@ text-decoration:none;
 font-weight:bold;
 border-radius:6px;
 transition:0.3s;
-box-shadow:0 0 10px rgba(0,255,204,0.3);
 }
 
 .btn:hover{
@@ -118,123 +135,87 @@ box-shadow:0 0 20px rgba(0,255,204,0.8);
 }
 
 /* CAMISETAS */
-.options{
-display:flex;
-gap:10px;
-margin-top:10px;
-}
-
-.box{
-width:25px;
-height:25px;
-border-radius:5px;
-cursor:pointer;
-border:2px solid white;
-}
-
+.options{display:flex;gap:10px;margin-top:10px;}
+.box{width:25px;height:25px;border-radius:5px;cursor:pointer;border:2px solid white;}
 .red{background:red;}
 .beige{background:#d2b48c;}
 .black{background:black;}
-
-.size{
-padding:5px 10px;
-border:1px solid white;
-cursor:pointer;
-}
+.size{padding:5px 10px;border:1px solid white;cursor:pointer;}
 
 /* RESPONSIVO */
 @media(max-width:800px){
 .grid{grid-template-columns:1fr;}
+h1{font-size:40px;}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>BODY FIT</h1>
-<p>Alta performance começa aqui</p>
-</header>
-
 <nav>
-<a onclick="show('home')">Início</a>
-<a onclick="show('planos')">Planos</a>
-<a onclick="show('whey')">Whey</a>
-<a onclick="show('pre')">Pré-treino</a>
-<a onclick="show('roupas')">Roupas</a>
+<a href="#home">Home</a>
+<a href="#planos">Planos</a>
+<a href="#produtos">Produtos</a>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="section active">
+<header id="home">
+<h1>BODY FIT</h1>
+</header>
+
+<section class="fade">
 <h2>Quem somos</h2>
-<p>A Body Fit nasceu em Porto Alegre focada em performance real e evolução constante.</p>
+<p>Academia focada em performance e evolução real em Porto Alegre.</p>
 
 <h2>Horário</h2>
 <p>Seg a Sex: 08h às 22h<br>Sábado: 13h às 17:30</p>
+</section>
 
-<h2>Localização</h2>
-<p>Porto Alegre - RS</p>
-</div>
-
-<!-- PLANOS -->
-<div id="planos" class="section">
+<section id="planos" class="fade">
 <h2>Planos</h2>
+
 <div class="grid">
 
 <div class="card">
 <h3>Mensal</h3>
-<p><strong>R$199,90</strong></p>
-<p>Acesso a uma unidade</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Plano Mensal">Contratar</a>
+<p>R$199,90</p>
+<a class="btn" href="SEU_LINK_MENSAL" target="_blank">Contratar</a>
 </div>
 
 <div class="card">
 <h3>Gold</h3>
-<p><strong>12x R$139,90</strong></p>
-<p>Acesso total</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Plano Gold">Contratar</a>
+<p>12x R$139,90</p>
+<a class="btn" href="SEU_LINK_GOLD" target="_blank">Contratar</a>
 </div>
 
 <div class="card">
-<h3>Duo Gold</h3>
-<p><strong>12x R$129,90</strong></p>
-<p>Para 2 pessoas</p>
-<a class="btn" href="https://wa.me/5551990110167?text=Plano Duo">Contratar</a>
+<h3>Duo</h3>
+<p>12x R$129,90</p>
+<a class="btn" href="SEU_LINK_DUO" target="_blank">Contratar</a>
 </div>
 
 </div>
-</div>
+</section>
 
-<!-- WHEY -->
-<div id="whey" class="section">
+<section id="produtos" class="fade">
+
 <h2>Whey</h2>
 <div class="card">
-<img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a">
-<p>Whey 1kg</p>
+<p>Whey Protein 1kg</p>
 <p>R$120</p>
 <a class="btn" href="https://wa.me/5551990110167?text=Quero Whey">Comprar</a>
 </div>
-</div>
 
-<!-- PRE -->
-<div id="pre" class="section">
 <h2>Pré-treino</h2>
 <div class="card">
-<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
 <p>Pré-treino 300g</p>
 <p>R$99</p>
 <a class="btn" href="https://wa.me/5551990110167?text=Quero Pré-treino">Comprar</a>
 </div>
-</div>
 
-<!-- ROUPAS -->
-<div id="roupas" class="section">
 <h2>Camisetas</h2>
-
 <div class="card">
-<img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
 
-<p><strong>Camiseta Body Fit</strong></p>
+<p>Camiseta Body Fit</p>
 <p>R$70</p>
 
 <p>Cor:</p>
@@ -252,17 +233,21 @@ cursor:pointer;
 </div>
 
 <a class="btn" onclick="comprar()">Comprar</a>
-</div>
+
 </div>
 
+</section>
+
 <script>
-function show(id){
-document.querySelectorAll('.section').forEach(s=>{
-s.classList.remove('active');
-});
-document.getElementById(id).classList.add('active');
-window.scrollTo({top:0,behavior:'smooth'});
+const elements = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', ()=>{
+elements.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight-100){
+el.classList.add('show');
 }
+});
+});
 
 let cor='', tamanho='';
 
